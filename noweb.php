@@ -30,7 +30,8 @@ class noweb
                 {
                     $this->chunks[$chunk] = '';
                 }
-                $this->markdown .= "<pre id=\"{$chunk}\" title=\"{$chunk}\">\n";
+                //$this->markdown .= "<pre id=\"{$chunk}\" title=\"{$chunk}\">\n";
+                $this->markdown .= "**{$chunk}:**\n"; 
                 continue;
             }
             if (is_null($chunk))
@@ -42,11 +43,12 @@ class noweb
             {
                 // Exiting a chunk
                 $chunk = null;
-                $this->markdown .= "</pre>\n";
+                //$this->markdown .= "</pre>\n";
                 continue;
             }
             $this->chunks[$chunk] .= $line;
-            $this->markdown .= htmlentities($line);
+            //$this->markdown .= htmlentities($line);
+            $this->markdown .= '    ' . $line;
         }
     }
 
